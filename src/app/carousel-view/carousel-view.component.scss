@@ -1,0 +1,63 @@
+#art-carousel, ngb-carousel {
+  width: calc(100vw - 64px);
+  max-height: 400px;
+}
+
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+  .img-box {
+    width: 200px;
+    height: 250px;
+    flex: auto;
+  }
+
+  .img-caption {
+    color: black;
+    font-size: 11px;
+    text-align: center;
+    max-width: 200px;
+    overflow: hidden;
+    cursor: pointer;
+
+    span {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+
+:host ::ng-deep {
+  .modal-img-box {
+    width: 100%;
+  }
+
+  #artCarouselControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-item {
+    display: flex !important;
+  }
+
+  .carousel-inner {
+    display: flex;
+    width: calc(100% - 48px);
+    margin: 0 24px;
+  }
+
+  .carousel .carousel-control-prev,
+  .carousel .carousel-control-next {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    opacity: 0.8;
+  }
+}
+

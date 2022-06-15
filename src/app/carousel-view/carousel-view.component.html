@@ -1,0 +1,34 @@
+<div id="art-carousel" class="col">
+  <div class="card-header"><h3>{{department.displayName}}</h3></div>
+  <ngb-carousel #artCarousel [interval]="500000" id="artCarouselControls"
+                [showNavigationIndicators]="false">
+    <ng-template ngbSlide (slid)="showNext($event)" *ngFor="let object of currentSlideArts">
+      <div class="img-wrapper carousel-item  float-left" *ngFor="let art of currentSlideArts">
+
+        <img class="rounded img-box" [src]="(art.primaryImageSmall ? art.primaryImageSmall : noImageAvailPath)"
+             [alt]="art.artistDisplayName"/>
+        <div class="img-caption" (click)="popUpDialog(art, myModal)"><span>{{art.title}}</span></div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<ng-template #myModal let-modal>
+  <ng-container *ngIf="selectedArt">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body m-100">
+      <h2>{{selectedArt.title}}</h2>
+      <img class="rounded modal-img-box m-100" style="width: 100%"
+           [src]="(selectedArt.primaryImageSmall ? selectedArt.primaryImageSmall : noImageAvailPath)"
+           [alt]="selectedArt.artistDisplayName"/>
+      <div *ngIf="selectedArt?.artistDisplayName">
+        Artist: <span>{{selectedArt.artistDisplayName}}</span>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="art-overview">
+  <div class="row search-row">
+    <mat-form-field [appearance]="'outline'">
+      <mat-label>Search</mat-label>
+      <input type="text"
+             aria-label="Number"
+             matInput
+             [formControl]="searchArt">
+      <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <mat-card *ngIf="departments?.length">
+    <cdk-virtual-scroll-viewport appendOnly itemSize="120" class="virtual-viewport">
+      <div *cdkVirtualFor="let department of departments" class="row art-deps-container">
+        <app-carousel-view [department]="department"></app-carousel-view>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </mat-card>
+</div>
